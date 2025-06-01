@@ -1,0 +1,191 @@
+{
+  "info": {
+    "_postman_id": "food-delivery-sample-collection",
+    "name": "Food Delivery API Sample Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"testuser@example.com\",\n  \"address\": \"123 Main St\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/users", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users"] }
+      }
+    },
+    {
+      "name": "Get User Profile",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8001/users/:id", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["users", ":id"] }
+      }
+    },
+    {
+      "name": "Place Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"<USER_ID>\",\n  \"restaurantId\": \"<RESTAURANT_ID>\",\n  \"items\": [\"Pizza\", \"Burger\"]\n}"
+        },
+        "url": { "raw": "http://localhost:8001/order", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["order"] }
+      }
+    },
+    {
+      "name": "List User Orders",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8001/order/user/:id", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["order", "user", ":id"] }
+      }
+    },
+    {
+      "name": "Add Rating",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"orderId\": \"<ORDER_ID>\",\n  \"rating\": 5,\n  \"comment\": \"Great food!\",\n  \"for\": \"restaurant\"\n}"
+        },
+        "url": { "raw": "http://localhost:8001/rating", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["rating"] }
+      }
+    },
+    {
+      "name": "Get Available Restaurants (User Service)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8001/restaurants?hour=14", "protocol": "http", "host": ["localhost"], "port": "8001", "path": ["restaurants"], "query": [{"key": "hour", "value": "14"}] }
+      }
+    },
+    {
+      "name": "Add Restaurant",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Pizza Place\",\n  \"status\": \"online\",\n  \"menu\": [{ \"name\": \"Pizza\", \"price\": 10 }],\n  \"openHours\": [12, 13, 14]\n}"
+        },
+        "url": { "raw": "http://localhost:8002/restaurants", "protocol": "http", "host": ["localhost"], "port": "8002", "path": ["restaurants"] }
+      }
+    },
+    {
+      "name": "Update Restaurant Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"offline\"\n}"
+        },
+        "url": { "raw": "http://localhost:8002/restaurants/:id/status", "protocol": "http", "host": ["localhost"], "port": "8002", "path": ["restaurants", ":id", "status"] }
+      }
+    },
+    {
+      "name": "Update Restaurant Menu",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"menu\": [{ \"name\": \"Pizza\", \"price\": 12 }, { \"name\": \"Burger\", \"price\": 8 }]\n}"
+        },
+        "url": { "raw": "http://localhost:8002/restaurants/:id/menu", "protocol": "http", "host": ["localhost"], "port": "8002", "path": ["restaurants", ":id", "menu"] }
+      }
+    },
+    {
+      "name": "Get Available Restaurants (Restaurant Service)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8002/restaurants?hour=14", "protocol": "http", "host": ["localhost"], "port": "8002", "path": ["restaurants"], "query": [{"key": "hour", "value": "14"}] }
+      }
+    },
+    {
+      "name": "Create Delivery Agent",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Agent 1\"\n}"
+        },
+        "url": { "raw": "http://localhost:8003/agents", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["agents"] }
+      }
+    },
+    {
+      "name": "Update Agent Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"unavailable\"\n}"
+        },
+        "url": { "raw": "http://localhost:8003/agents/:id/status", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["agents", ":id", "status"] }
+      }
+    },
+    {
+      "name": "Get Available Agents",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8003/agents/available", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["agents", "available"] }
+      }
+    },
+    {
+      "name": "Assign Delivery to Agent",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"orderId\": \"<ORDER_ID>\",\n  \"agentId\": \"<AGENT_ID>\"\n}"
+        },
+        "url": { "raw": "http://localhost:8003/deliveries", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["deliveries"] }
+      }
+    },
+    {
+      "name": "Update Delivery Status",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"delivered\"\n}"
+        },
+        "url": { "raw": "http://localhost:8003/deliveries/:id/status", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["deliveries", ":id", "status"] }
+      }
+    },
+    {
+      "name": "List Deliveries for Agent",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "http://localhost:8003/deliveries/agent/:agentId", "protocol": "http", "host": ["localhost"], "port": "8003", "path": ["deliveries", "agent", ":agentId"] }
+      }
+    }
+  ]
+}
